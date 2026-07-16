@@ -48,7 +48,7 @@ This app relies on a few standard scientific libraries to do the heavy lifting.
 Move to the folder where you have unzipped the app. Create a folder with your organism's scientific name (for example, `bicyclus_anynana`). Add the `genome.fa` and `annotation.gtf` for the organism inside that folder.
 
 ### Step 5: Start the App
-3. Copy and paste this exact command into the terminal and press Enter:
+3. Copy and paste this exact command into the terminal (in the same location where app.py is present) and press Enter:
    ```bash
    python app.py
    ```
