@@ -1,0 +1,5 @@
+#dependencies
+pip install fastapi uvicorn pyfaidx torch pandas
+
+#run_the_app
+python app.py

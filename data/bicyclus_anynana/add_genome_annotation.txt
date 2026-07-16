@@ -1,0 +1,2 @@
+Add genome as genome.fa
+Add gtf as annotation.gtf
