@@ -32,7 +32,7 @@ If you do not already have Python installed on your computer:
 1. Go to [Python.org](https://www.python.org/downloads/) and download the latest version for your operating system (Windows or Mac).
 2. Run the installer. **CRITICAL:** When the installer opens, make sure to check the box at the bottom that says **"Add python.exe to PATH"** before clicking Install.
 
-### Step 3: Install Required Libraries
+
 ### Step 3: Install Required Libraries
 This app relies on a few standard scientific libraries to do the heavy lifting.
 
@@ -52,4 +52,6 @@ Move to the folder where you have unzipped the app. Create a folder with your or
    ```bash
    python app.py
    ```
+   <img width="1890" height="888" alt="app" src="https://github.com/user-attachments/assets/af81890d-f212-4711-94fd-0401a2db5951" />
+
 Designed by [Tirtha Das Banerjee](https://tirthadasbanerjee.com/).
