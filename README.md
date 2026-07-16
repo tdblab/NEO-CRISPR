@@ -33,18 +33,23 @@ If you do not already have Python installed on your computer:
 2. Run the installer. **CRITICAL:** When the installer opens, make sure to check the box at the bottom that says **"Add python.exe to PATH"** before clicking Install.
 
 ### Step 3: Install Required Libraries
+### Step 3: Install Required Libraries
 This app relies on a few standard scientific libraries to do the heavy lifting.
+
 1. Open your computer's terminal:
    * **Windows:** Press the Start button, type `cmd` or `PowerShell`, and hit Enter.
    * **Mac:** Open Spotlight (Command + Space), type `Terminal`, and hit Enter.
 2. Copy and paste this exact command into the terminal and press Enter:
    ```bash
    pip install fastapi uvicorn pyfaidx torch pandas
-```
-###Move to the folder where you have unzipped the app. Create a folder with you organisms scientific name. For example "bicyclus_anynana". Add the genome.fa and annotation.gtf for the organism inside the folder.
+   ```
 
+### Step 4: Set Up Your Organism Data
+Move to the folder where you have unzipped the app. Create a folder with your organism's scientific name (for example, `bicyclus_anynana`). Add the `genome.fa` and `annotation.gtf` for the organism inside that folder.
+
+### Step 5: Start the App
 3. Copy and paste this exact command into the terminal and press Enter:
    ```bash
    python app.py
-```
+   ```
 Designed by [Tirtha Das Banerjee](https://tirthadasbanerjee.com/).
