@@ -6,6 +6,9 @@ NEO-CRISPR is a standalone desktop application that runs entirely on your own co
 
 While designed with a focus on *Lepidoptera*, this tool works perfectly for **any organism**.
 
+<img width="2264" height="1324" alt="neo_crispr" src="https://github.com/user-attachments/assets/321fe5c9-e76b-47fc-bc5a-b1e95c7437da" />
+
+
 ---
 
 ## ⚡ Features
