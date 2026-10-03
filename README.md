@@ -78,7 +78,6 @@ off-target labelled with the gene it falls in.
    ```
    <img width="1893" height="889" alt="Screenshot 2026-07-17 075109" src="https://github.com/user-attachments/assets/d6385edc-5dad-4481-962c-c7372cce269a" />
 
-
 ---
 
 ## 🧪 For Developers
