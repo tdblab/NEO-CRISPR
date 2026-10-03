@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Genome data (users drop their own large FASTA/GTF here; don't commit them)
+data/**/*.fa
+data/**/*.fasta
+data/**/*.gtf
+data/**/*.fai

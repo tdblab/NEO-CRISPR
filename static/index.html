@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO-CRISPR Platform Core</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <span class="dot"></span>
+            <h1>Neo-CRISPR</h1>
+        </div>
+        <div class="engine-state">
+            ENGINE STATE: <b id="engineState">LOCAL SYSTEM CONNECTED</b>
+        </div>
+    </header>
+
+    <main>
+        <div class="grid">
+            <div>
+                <div class="panel">
+                    <h2>01 / Target Matrix Selection</h2>
+                    <label for="speciesSelect">Target Taxon Species</label>
+                    <select id="speciesSelect"></select>
+                    <p class="hint" id="annotationHint"></p>
+                </div>
+
+                <div class="panel">
+                    <h2>02 / Genetic Sequence Data</h2>
+                    <label for="seqInput">Target Region Sequence (5' &rarr; 3')</label>
+                    <textarea id="seqInput" placeholder="PASTE TARGET SEQUENCE OR FASTA HERE..."></textarea>
+                    <button class="design" onclick="processSequence()">Design Guides</button>
+                    <p class="hint">
+                        Guides are found on both strands. Off-targets are scanned across the
+                        whole genome (both strands, NGG&nbsp;&amp;&nbsp;NAG PAMs). The score is a
+                        transparent heuristic, not a validated efficiency predictor.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <div id="sequenceViewer" class="panel hidden">
+                    <h2>// Target Sequence Map</h2>
+                    <div id="sequenceMap"></div>
+                    <div class="legend">
+                        <span><span class="swatch spacer"></span> Spacer (protospacer)</span>
+                        <span><span class="swatch pam"></span> PAM</span>
+                        <span>Hover a guide card to map its binding region.</span>
+                    </div>
+                </div>
+
+                <div class="panel results">
+                    <h2>// Computational Guide Outputs</h2>
+                    <div id="emptyState" class="empty">
+                        <div class="icon">&#129516;</div>
+                        <p>Awaiting sequence. Choose a species and sequence, then design guides.</p>
+                    </div>
+                    <div id="resultsContent" class="hidden"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Designed by:
+            <a href="https://tirthadasbanerjee.com/" target="_blank" rel="noopener">Tirtha Das Banerjee</a>
+        </p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

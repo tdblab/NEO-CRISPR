@@ -1,5 +1,13 @@
 #dependencies
-pip install fastapi uvicorn pyfaidx torch pandas
+pip install -r requirements.txt
+# (or: pip install fastapi uvicorn pyfaidx torch pandas)
+
+#organism_data
+# Put your genome under data/<species_name>/genome.fa
+# A GTF annotation is optional: data/<species_name>/annotation.gtf (enables gene labels)
 
 #run_the_app
 python app.py
+
+#run_the_tests
+pytest

@@ -6,15 +6,35 @@ NEO-CRISPR is a standalone desktop application that runs entirely on your own co
 
 While designed with a focus on *Lepidoptera*, this tool works perfectly for **any organism**.
 
+<img width="2264" height="1324" alt="neo_crispr" src="https://github.com/user-attachments/assets/321fe5c9-e76b-47fc-bc5a-b1e95c7437da" />
+
+
 ---
 
 ## ⚡ Features
 
-* **Absolute Privacy:** Everything runs locally on your machine.
-* **Plug-and-Play Genomes:** No coding required to add a new species. Just drop your `.fa` (FASTA) and `.gtf` annotation files into a folder, and the app will automatically detect and index them.
-* **Smart Ranking:** Automatically ranks candidate guides to give you the best options first (prioritizing 0 off-targets and highest efficiency).
-* **Interactive Sequence Map:** Hover over any generated guide to instantly see exactly where it binds on your target sequence.
-* **Hardware Accelerated:** Uses advanced tensor math (PyTorch) to perform rapid off-target scanning, utilizing your computer's GPU if available, or seamlessly running on the CPU.
+* **Absolute Privacy:** Everything runs locally on your machine. The interface ships
+  with the app (no CDN, no fonts fetched from the internet), so it also works fully offline.
+* **Both Strands:** Candidate guides are found on **both** the forward and reverse strands
+  of your target sequence.
+* **Genome-Wide Off-Target Scan:** Every scaffold of the genome is scanned on **both strands**
+  for off-targets (up to 3 mismatches), tolerating both the canonical `NGG` PAM and the weaker
+  `NAG` PAM. Each guide's own on-target site is excluded, and the PAM-proximal "seed" mismatches
+  are reported separately because they matter most for specificity.
+* **Gene Annotation:** If you provide a `.gtf` file, each off-target is labelled with the gene
+  it lands in.
+* **Plug-and-Play Genomes:** No coding required to add a new species. Just drop your `.fa`
+  (FASTA) file into a folder (a `.gtf` is optional, for gene annotation), and the app detects it
+  automatically.
+* **Interactive Sequence Map:** Hover over any generated guide to instantly see exactly where it
+  binds on your target sequence, with the spacer and PAM highlighted separately.
+* **Hardware Accelerated:** Uses tensor math (PyTorch) for the off-target scan, using your
+  computer's GPU if available, or seamlessly running on the CPU. The genome is encoded once and
+  cached, and every candidate guide is scanned in a single batched pass.
+
+> **A note on scoring:** the per-guide **score** is a transparent rule of thumb (it rewards
+> mid-range GC content and a 3′ G). It is *not* a validated on-target efficiency predictor such
+> as Rule Set 2 or DeepSpCas9 — use it as a tie-breaker, not as ground truth.
 
 ---
 
@@ -41,17 +61,39 @@ This app relies on a few standard scientific libraries to do the heavy lifting.
    * **Mac:** Open Spotlight (Command + Space), type `Terminal`, and hit Enter.
 2. Copy and paste this exact command into the terminal and press Enter:
    ```bash
-   pip install fastapi uvicorn pyfaidx torch pandas
+   pip install -r requirements.txt
    ```
+   (Or install the packages directly: `pip install fastapi uvicorn pyfaidx torch pandas`.)
 
 ### Step 4: Set Up Your Organism Data
-Move to the folder where you have unzipped the app. Create a folder with your organism's scientific name (for example, `bicyclus_anynana`). Add the `genome.fa` and `annotation.gtf` for the organism inside that folder.
+Move to the folder where you have unzipped the app. Inside the `data/` folder, create a folder
+with your organism's scientific name (for example, `bicyclus_anynana`) and add your genome FASTA
+as `genome.fa`. A GTF annotation (`annotation.gtf`) is **optional** — add it if you want each
+off-target labelled with the gene it falls in.
 
 ### Step 5: Start the App
 3. Copy and paste this exact command into the terminal (in the same location where app.py is present) and press Enter:
    ```bash
    python app.py
    ```
-   <img width="1890" height="888" alt="app" src="https://github.com/user-attachments/assets/af81890d-f212-4711-94fd-0401a2db5951" />
+   <img width="1893" height="889" alt="Screenshot 2026-07-17 075109" src="https://github.com/user-attachments/assets/d6385edc-5dad-4481-962c-c7372cce269a" />
+
+
+---
+
+## 🧪 For Developers
+
+The scientific core lives in `engine.py` (sequence cleaning, both-strand guide discovery,
+genome-wide off-target scanning, GTF annotation) and is independent of the web server in
+`app.py`. The browser UI is served from `static/`.
+
+Run the test suite with:
+
+```bash
+pip install -r requirements.txt
+pytest
+```
+
+---
 
 Designed by [Tirtha Das Banerjee](https://tirthadasbanerjee.com/).

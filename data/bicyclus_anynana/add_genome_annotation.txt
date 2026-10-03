@@ -1,2 +1,2 @@
-Add genome as genome.fa
-Add gtf as annotation.gtf
+Add genome as genome.fa (required)
+Add GTF as annotation.gtf (optional -- enables gene labels on off-targets)
